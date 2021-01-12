@@ -1,0 +1,5 @@
+/* 追加設定用stylesheet */
+.top_title {
+    bottom: 50%;
+    transform: translateY(50%);
+}

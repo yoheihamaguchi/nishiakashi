@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="ja">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="./css/bootstrap.css" crossorigin="anonymous">
+  
+  <link rel="stylesheet" href="./css/style.css">
+  <script type="text/javascript" src="./js/jquery-3.5.1.js"></script>
+  <script type="text/javascript" src="./js/bootstrap.js"></script>
+
+  <title>西明石北商店会</title>
+</head>
+
+<body>
+  <div id="carouselControls" class="carousel slide carousel-fade" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="item carousel-item active"><img class="w-100" src="./images/welcome.jpg"></div>
+      <div class="item carousel-item"><img class="w-100" src="./images/illumination.jpg"></div>
+      <div class="item carousel-item"><img class="w-100" src="./images/station.jpg"></div>
+      <div class="item carousel-item"><img class="w-100" src="./images/yumedori.jpg"></div>
+      <div class="item carousel-item"><img class="w-100" src="./images/ekimae.jpg"></div>
+      <div class="carousel-caption top_title"><img src="./images/top_title_bright.png"></div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselControls" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselControls" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+  <div class="ml-2 mr-2">
+    <div id="welcome">
+      <h1 class="display-3">ようこそ西明石北商店会へ！</h1>
+    </div>
+    <div class="lead">
+      <h2>西明石北商店会について</h2>
+      <p>西明石北商店会は、昭和44年に設立した商店会で、ＪＲ西明石駅北側で物品販売・飲食等、様々な商売の個人商店が加入している商店会です。</p>
+      <p>2013年度において、安心、安全な街づくりとして街路灯68基のＬＥＤ化に取り組みまた、年末事業及び防犯対策として、駅前ロータリーにおいて商店会会員による手作りのイルミネーション事業を実施しています。</p>
+      <p>また、地域住民の皆様の防犯対策として会員店舗以外の道路等地域全体にも街路灯を設置しています。年末には、地元自治会と協力し、合同パトロール・夜警を実施しています。</p>
+      <p>
+        2014年度からの取組で、地域住民の皆様はもとより、山陽新幹線西明石駅前としても遠方のお客様にＨＰによる情報発信をすることにより、店舗のご利用の増加に結び付けていく活動を実施しています。そして空き店舗対策についても、西明石駅北の良さをＰＲするために、マップ、タウン誌を発行し、多様な店舗誘致を行い、空き店舗ゼロを目指すとともに、魅力ある商店会づくりを続けています。
+      </p>
+    </div>
+  </div>
+ 
+  
+  <iframe src="http://nishiakashikita-s.com/" class="mt-3 mb-3" name="frame"  width="100%" height="1000px"></iframe>
+  <div class="container p-0">
+    <div class="row h-100">
+      <div class="col"><a class="btn btn-primary btn-block btn-lg p-5" href="http://nishiakashikita-s.com/aboutus.html"
+          role="button" target="frame">商店会について</a>
+      </div>
+      <div class="col"><a class="btn btn-primary btn-block btn-lg p-5"
+          href="http://nishiakashikita-s.com/shopinfo_top.html" role="button" target="frame">店舗案内</a>
+      </div>
+      <div class="col"><a class="btn btn-primary btn-block btn-lg p-5"
+          href="http://nishiakashikita-s.com/illumigallery.html" role="button" target="frame">イベント案内</a></div>
+    </div>
+    <br>
+    <div>
+      <a class="btn btn-primary btn-block btn-lg p-5" href="#" role="button">パパたこと写真を写そう! (LINE 登録でクーポンゲット)
+      </a>
+    </div>
+  </div>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+    crossorigin="anonymous"></script>
+
+
+    <video id="camera" width="300" height="200"></video>
+    <canvas id="picture" width="300" height="200"></canvas>
+    <form>
+      <button type="button" id="shutter">シャッター</button>
+    </form>
+        
+    <script>
+      window.onload = () => {
+  const video  = document.querySelector("#camera");
+  const canvas = document.querySelector("#picture");
+  const se     = document.querySelector('#se');
+
+  /** カメラ設定 */
+  const constraints = {
+    audio: true,
+    video: {
+      width: 300,
+      height: 200,
+      facingMode: "user"   // フロントカメラを利用する
+    }
+  };
+
+  /**
+   * カメラを<video>と同期
+   */
+  navigator.mediaDevices.getUserMedia(constraints)
+  .then( (stream) => {
+    video.srcObject = stream;
+    video.onloadedmetadata = (e) => {
+      video.play();
+    };
+  })
+  .catch( (err) => {
+    console.log(err.name + ": " + err.message);
+  });
+
+  /**
+   * シャッターボタン
+   */
+   document.querySelector("#shutter").addEventListener("click", () => {
+    const ctx = canvas.getContext("2d");
+    // canvasに画像を貼り付ける
+    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+  });
+};
+    </script>
+    
+  </body>
+
+</html>
