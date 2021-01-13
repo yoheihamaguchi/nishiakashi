@@ -1,5 +1,21 @@
 /* 追加設定用stylesheet */
+body {
+    position: relative;
+}
 .top_title {
     bottom: 50%;
     transform: translateY(50%);
+}
+
+.QR {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    margin: 5px;
+}
+
+.QR img {
+    display: block;
+    margin: 10px auto;
 }
