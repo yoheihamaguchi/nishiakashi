@@ -4,6 +4,8 @@ window.onload = () => {
     const shutter = document.querySelector("#shutter");
     const a = document.querySelector("#download")
     const ctx = canvas.getContext("2d");
+    video.setAttribute("style", "margin-bottom:40px")
+    a.style.display = "none"
 
     /** カメラ設定 */
     const constraints = {
@@ -59,12 +61,15 @@ window.onload = () => {
         canvas.toBlob((blob) => {
             console.log(blob)
             a.href = URL.createObjectURL(blob)
+            a.style.display = "block"
+
+
             // console.log('url:', a.href)
 
             // let newImg = document.createElement("img")
             // newImg.src = a.href
             // document.body.appendChild(newImg)
-        }, "image/png")
+        })
 
         URL.revokeObjectURL(a.href)
     });
