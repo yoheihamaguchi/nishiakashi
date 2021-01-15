@@ -4,58 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/bootstrap.css" crossorigin="anonymous">
     <title>Document</title>
 </head>
 
 <body>
     <video id="camera"></video>
-    <canvas id="picture" width="300" height="200"></canvas>
 
     <div>
         <button class="btn btn-primary btn-block btn-lg p-5" href="./camera.html" id="shutter">シャッター</button>
     </div>
 
-    <script>
-        window.onload = () => {
-            const video = document.querySelector("#camera");
-            const canvas = document.querySelector("#picture");
-            const se = document.querySelector('#se');
-
-            /** カメラ設定 */
-            const constraints = {
-                audio: false,
-                video: {
-                    width: { min: 1280 },
-                    height: { min: 720 },
-                    facingMode: "user"   // フロントカメラを利用する
-                }
-            };
-
-            /**
-             * カメラを<video>と同期
-             */
-            navigator.mediaDevices.getUserMedia(constraints)
-                .then((stream) => {
-                    video.srcObject = stream;
-                    video.onloadedmetadata = (e) => {
-                        video.play();
-                    };
-                })
-                .catch((err) => {
-                    console.log(err.name + ": " + err.message);
-                });
-
-            /**
-             * シャッターボタン
-             */
-            document.querySelector("#shutter").addEventListener("click", () => {
-                const ctx = canvas.getContext("2d");
-                // canvasに画像を貼り付ける
-                ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-            });
-        };
-    </script>
-
+    <canvas id="picture" width="300" height="200" style="display: none;"></canvas>
+    <br>
+    <div>
+        <a class="btn btn-primary btn-block btn-lg p-5" id="download" download="picture.png">ダウンロード</a>
+    </div>
+    <script src="./js/camera.js"></script>
 </body>
 
 </html>
