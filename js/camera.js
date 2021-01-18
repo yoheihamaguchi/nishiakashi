@@ -63,9 +63,7 @@ window.onload = () => {
             a.href = URL.createObjectURL(blob)
             a.style.display = "block"
 
-
             // console.log('url:', a.href)
-
             // let newImg = document.createElement("img")
             // newImg.src = a.href
             // document.body.appendChild(newImg)
