@@ -5,17 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/bootstrap.css" crossorigin="anonymous">
-    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css" crossorigin="anonymous">
+    <title>カメラ機能実装ページ</title>
 </head>
 
-<body>
+<body class="mt-5">
     <video id="camera"></video>
+    <img class="character" src="./images/pyoko_kagamimochi.png" />
 
     <div>
         <button class="btn btn-primary btn-block btn-lg p-5" id="shutter">シャッター</button>
     </div>
 
-    <canvas id="picture" width="300" height="200" style="display: none;"></canvas>
+    <canvas id="picture" width="1080" height="720"></canvas>
     <br>
     <div>
         <a class="btn btn-primary btn-block btn-lg p-5" id="download" download="picture.png">ダウンロード</a>
