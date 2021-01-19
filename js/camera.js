@@ -8,7 +8,7 @@ window.onload = () => {
     video.setAttribute("style", "margin-bottom:40px")
     a.style.display = "none"
     canvas.style.display = "none"
-    shutter.style.display = "none"
+    // shutter.style.display = "none"
 
     /** カメラ設定 */
     const constraints = {
@@ -71,17 +71,22 @@ window.onload = () => {
         //     images[i].height = images[i].height / 2
         // }
 
-        canvas.toBlob((blob) => {
-            console.log(blob)
+        canvas.toBlob((b) => {
+            let blob = new Blob([b], { type: 'text/html' })
+            console.log('blob:', blob)
             a.href = URL.createObjectURL(blob)
             a.style.display = "block"
-
-            // console.log('url:', a.href)
+            // let url = canvas.toDataURL()
+            // console.log(url)
             // let newImg = document.createElement("img")
             // newImg.src = a.href
             // document.body.appendChild(newImg)
-        })
 
+            // QRコード表示
+            // let newImg = document.createElement("img")
+            // document.body.appendChild(newImg)
+            // newImg.src = `https://chart.apis.google.com/chart?cht=qr&chs=150x150&chl=${a.href}`
+        })
         URL.revokeObjectURL(a.href)
     });
 }
