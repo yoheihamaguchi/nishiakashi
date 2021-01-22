@@ -30,3 +30,7 @@ video {
   right: 50%;
   transform: translate(50%, 80%);
 }
+
+.welcome {
+  font-family: "Yusei Magic", sans-serif;
+}
