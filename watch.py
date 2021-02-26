@@ -5,17 +5,19 @@
 # 参考Webページ
 #    https://pythonhosted.org/watchdog/quickstart.html#a-simple-example
 
-import sys
-import time
-import os
 import hashlib
+import os
 import pathlib
 import pprint
-# from makeQRcode import makeQRcode
-from watchdog.observers import Observer
-from watchdog.events import FileSystemEventHandler
+import sys
+import time
+
 from pydrive2.auth import GoogleAuth
 from pydrive2.drive import GoogleDrive
+from watchdog.events import FileSystemEventHandler
+from watchdog.observers import Observer
+
+# from makeQRcode import makeQRcode
 
 # 認証情報を生成
 gauth = GoogleAuth()
@@ -29,14 +31,6 @@ drive = GoogleDrive(gauth)
 class ChangeHandler(FileSystemEventHandler):
     def __init__(self,path):
         self.path = path
-    # def on_deleted(self, event):
-    #     """
-    #     ファイル削除検知
-    #     :param event:
-    #     :return:
-    #     """
-    #     src_name = os.path.basename(event.src_path)
-    #     print(f'{src_name}を削除しました')
 
     def on_created(self, event):
         """
@@ -46,14 +40,16 @@ class ChangeHandler(FileSystemEventHandler):
         """
         # ファイル名取得
         src_name = os.path.basename(event.src_path)
+        src_name = src_name.replace(".crdownload", "")
+        
         
         # パスの確認のため取得　最終的に削除する部分
         src_path = pathlib.Path(self.path) / pathlib.Path(f'{src_name}')
 
         # パスの確認のため取得　最終的に削除する部分
         print(f'{src_name}ができました')
-        print(f'src_name: {src_name}')
         print(f'src_path: {src_path}')
+        print(f'src_name: {src_name}')
         
 
         # makeQRcode(src_name)
