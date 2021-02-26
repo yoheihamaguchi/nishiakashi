@@ -11,6 +11,7 @@ import os
 import hashlib
 import pathlib
 import pprint
+# from makeQRcode import makeQRcode
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 from pydrive2.auth import GoogleAuth
@@ -51,11 +52,16 @@ class ChangeHandler(FileSystemEventHandler):
 
         # パスの確認のため取得　最終的に削除する部分
         print(f'{src_name}ができました')
+        print(f'src_name: {src_name}')
         print(f'src_path: {src_path}')
+        
 
-        f = drive.CreateFile()
+        # makeQRcode(src_name)
+        f = drive.CreateFile({'title' : 'picture.jpg',
+            'mimeType' : 'image/jpeg'})
         f.SetContentFile(src_name)
         f.Upload()
+        print(f'{src_name}をアップ完了')
 
         # パスの確認のため取得　最終的に削除する部分
         print('upload: ',f)
