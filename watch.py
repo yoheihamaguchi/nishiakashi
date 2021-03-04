@@ -29,9 +29,6 @@ gauth.LocalWebserverAuth()
 drive = GoogleDrive(gauth)
 
 class ChangeHandler(FileSystemEventHandler):
-    def __init__(self,path):
-        self.path = path
-
     def on_created(self, event):
         """
         ファイル作成検知
@@ -40,18 +37,10 @@ class ChangeHandler(FileSystemEventHandler):
         """
         # ファイル名取得
         src_name = os.path.basename(event.src_path)
-        src_name = src_name.replace(".crdownload", "")
-        
-        
-        # パスの確認のため取得　最終的に削除する部分
-        src_path = pathlib.Path(self.path) / pathlib.Path(f'{src_name}')
-
-        # パスの確認のため取得　最終的に削除する部分
-        print(f'{src_name}ができました')
-        print(f'src_path: {src_path}')
         print(f'src_name: {src_name}')
+        src_name = src_name.replace(".crdownload", "")
+        print(f'src_name replaced: {src_name}')
         
-
         # makeQRcode(src_name)
         f = drive.CreateFile({'title' : 'picture.jpg',
             'mimeType' : 'image/jpeg'})
@@ -65,14 +54,10 @@ class ChangeHandler(FileSystemEventHandler):
     
 if __name__ == '__main__':
     # ディレクトリの取得と，カレントディレクトリの変更
-    if len(sys.argv) > 1:
-        path = sys.argv[1]
-        os.chdir(path)
-    else:
-        path = os.path.abspath(os.path.dirname(__file__))
-        print("dirname: ",path)
+    path = os.path.abspath(os.path.dirname(__file__))
+    print("dirname: ",path)
 
-    event_handler = ChangeHandler(path)
+    event_handler = ChangeHandler()
     observer = Observer()
     observer.schedule(event_handler, path, recursive=True)
     observer.start()
